@@ -1,0 +1,45 @@
+
+
+<table class="table table-hover table-bordered striped">
+        
+          <thead>
+            <tr>
+              <th scope="col">Spider</th>
+              <th scope="col">Job</th>
+              <th scope="col">Action</th>
+              <th scope="col">Status</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">End Time</th>
+              <th scope="col">Log</th>
+            </tr>
+          </thead>
+          <tbody>
+        
+                {%for job in running%}
+            <tr>
+                    
+                    <td>{{job.spider}}</td>
+                    
+                    
+             <td>{{job.id}}</td>
+              <td>
+              <form>
+              <input type="hidden" name="project" value="{{project}}">
+              <input type="hidden" name="job" value="{{job.id}}">
+              <button class="btn btn-danger" type="submit">Stop</button>
+              </form>
+              </td>
+             <td>running</td>
+             <td>{{job.start_time}}</td>
+              <td></td>
+            <td>
+              <a href="{%url "myspy:log" %}?project={{project}}&spider={{job.spider}}&job={{job.id}}" target="_blank" class="btn btn-info" role="button">Log</a>
+            </td>
+
+             
+            </tr>
+            {%endfor%}
+  
+  </tbody>
+  </table>
+  
